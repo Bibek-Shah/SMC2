@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html class="light"
+      lang="en"
+      th:fragment="parent(content,title,script)"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+    <title th:replace="${title}">Smart Contact Manager</title>
+
+    <!--Main Css-->
+    <link
+            rel="stylesheet"
+            th:href="@{/css/output.css}"
+    />
+    <!--Flowbite Css-->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+            rel="stylesheet"
+    />
+    <!--Font Awesome   -->
+    <link
+            crossorigin="anonymous"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+            integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+            referrerpolicy="no-referrer"
+            rel="stylesheet"
+    />
+</head>
+<body class="dark:bg-gray-900 dark:text-white">
+
+<!-- Sidebar-->
+<!-- user is logged in : sidebar -->
+
+<div th:if="${loggedInUser}">
+    <div data-th-replace="~{user/sidebar :: sidebar}"></div>
+</div>
+
+<!-- Navigation Bar-->
+
+<!--  user is logged in : navbar -->
+<div th:if="${loggedInUser}">
+    <div data-th-replace="~{/user/user-navbar::user-navbar}"></div>
+</div>
+
+<!-- user is not logged : navbar -->
+<div th:unless="${loggedInUser}">
+    <div data-th-replace="~{/fragments/navbar :: navbar}"></div>
+</div>
+
+
+<!--Main Content-->
+<div th:replace="${content}"></div>
+
+<!--Footer-->
+<!--<div th:replace="~{fragments/footer :: footer}"></div>-->
+
+
+<!--Flowbite Js-->
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js">
+</script>
+
+<!--Main Js-->
+<script th:src="@{/js/script.js}"></script>
+
+<!-- Other  page Js-->
+<script th:replace="${script}"></script>
+</body>
+</html>

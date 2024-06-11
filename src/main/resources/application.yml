@@ -1,0 +1,68 @@
+server:
+  port: 80
+#  error:
+#    include-binding-errors: always
+#    include-message: always
+
+spring:
+  profiles:
+    active: dev
+
+  application:
+    name: SMART_CONTACT_MANAGER
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/SMC2
+    username: root
+    password: 12345678
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+
+
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 128KB
+      max-file-size: 1024MB
+      max-request-size: 1024MB
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: sdevil78088@gmail.com
+    password: xfnl eeei qare cwzz
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            connection timeout: 5000
+            timeout: 5000
+            write timeout: 5000
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            scope:
+              - profile
+              - email
+            client-name: Google
+            client-id: 270081265743-spidd9vv6cs3phkg1ja5h8rvn7hi0ner.apps.googleusercontent.com
+            client-secret: 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
+          github:
+            client-secret: a0e285b243344bf23873128e81045ca57541b020
+            client-id: Iv23licUoiqJ6IEAb1lA
+          facebook:
+            client-id: 336369249261926
+            client-secret: af6a7664c3238f8d407578f6c60eda4e
+
